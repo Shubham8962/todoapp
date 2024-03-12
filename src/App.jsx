@@ -41,7 +41,7 @@ function App() {
             onChange={(e) => setTask(e.currentTarget.value)}
             className="border-solid"
             type="text"
-            placeholder="Enter Task"
+            placeholder="Enter Task here"
           />
           <br />
 
