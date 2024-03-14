@@ -26,10 +26,25 @@ function App() {
     let todo = {
       task: task,
       description: description,
+      completed: false,
     };
 
     setTodos([...todos, todo]);
   }
+
+  const markAsComplete = (id) => {
+    var temp = [...todos];
+    temp[id].completed = true;
+
+    setTodos(temp);
+  };
+
+  const deleteTodo = (id) => {
+    var temp = [...todos];
+    temp.splice(id, 1);
+
+    setTodos(temp);
+  };
 
   return (
     <>
@@ -60,8 +75,15 @@ function App() {
         </div>
         <div className="flex items-center flex-col py-2 pt-2 space-y-2">
           {todos &&
-            todos.map((item) => (
-              <TodoCard task={item.task} description={item.description} />
+            todos.map((item, index) => (
+              <TodoCard
+                deleteTodo={deleteTodo}
+                markAsComplete={markAsComplete}
+                id={index}
+                task={item.task}
+                completed={item.completed}
+                description={item.description}
+              />
             ))}
         </div>
       </div>
